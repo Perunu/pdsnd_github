@@ -130,21 +130,21 @@ def station_stats(df):
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
 
-    # display most commonly used start station
 
-    fav_start_station = df['Start Station'].mode()[0]
+    # display most commonly used start station
+    fav_start_station = df['Start Station'].mode()[0] #get mode
     print('The most commonly used Start Station is: ', fav_start_station)
 
 
-    # display most commonly used end station
-
+    # display most commonly used end station (same logic as start station)
     fav_end_station = df['End Station'].mode()[0]
     print('The most commonly used End Station is: ', fav_end_station)
 
 
     # display most frequent combination of start station and end station trip
-
-    start_end_filter = df.value_counts(['Start Station', 'End Station']).head(1).index.tolist()
+    #count start/end combos; default sort is desc; limit to 1st row; create List from 1st row (List will be a List of Tuples)
+    start_end_filter = df.value_counts(['Start Station', 'End Station']).head(1).index.tolist() 
+    #get elements (accessing from List of Tuples is [list_element][tuple_element])
     print('The majority of people would start at', start_end_filter[0][0], 'station and end their journey at', start_end_filter[0][1], ' station')
 
 
