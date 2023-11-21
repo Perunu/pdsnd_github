@@ -255,7 +255,7 @@ def main():
         city, month, day = get_filters() #grab inputs for city, month, and day
         df = load_data(city, month, day) #create DataFrame
 
-        print('For the criteria selected:')
+        print(f'For the city of {city.title()} and the month of {month.title()} and for {day.title()}:')
 
         #below set of functions return various desired stats
         time_stats(df)
