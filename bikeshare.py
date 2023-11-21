@@ -189,7 +189,7 @@ def user_stats(df):
 
     i = 0
     while i < len(user_types):
-        print('     ', user_types[i], user_types_counts[i])
+        print('\t', user_types[i], user_types_counts[i])
         i += 1
     print()
 
@@ -205,7 +205,7 @@ def user_stats(df):
 
         i = 0
         while i < len(genders):
-            print('     ', genders[i], gender_counts[i])
+            print('\t', genders[i], gender_counts[i])
             i += 1
     print()
 
