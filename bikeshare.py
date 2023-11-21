@@ -160,13 +160,14 @@ def trip_duration_stats(df):
 
 
     # display total travel time
-    trip_duration_sum = df['Trip Duration'].sum()
+    trip_duration_sum = df['Trip Duration'].sum() #get total travel time in seconds
+    #divide total travel time into days/hours/minutes/seconds
     print('The total duration for all trips for the selected criteria is:', trip_duration_sum//86400, 'days', trip_duration_sum%86400//3600, 'hours', trip_duration_sum%86400%3600//60, 'minutes and', trip_duration_sum%86400%3600%60, 'seconds.')
 
 
     # display mean travel time
-    trip_duration_avg = df['Trip Duration'].mean()
-    print('The average travel time for all trips for the selected criteria is:', round(trip_duration_avg/60, 2), 'minutes.')
+    trip_duration_avg = df['Trip Duration'].mean() #get average travel time in seconds
+    print('The average travel time for all trips for the selected criteria is:', round(trip_duration_avg/60, 2), 'minutes.') #convert to minutes rounded to 2 decimal places
 
 
     print("\nThis took %s seconds." % (time.time() - start_time))
