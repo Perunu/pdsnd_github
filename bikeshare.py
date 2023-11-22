@@ -182,11 +182,11 @@ def user_stats(df):
 
 
     # Display counts of user types
+    user_types = df['User Type'].value_counts().index.tolist() #get names of user types and put into a List
+    user_types_counts = df['User Type'].value_counts().tolist() #get counts of user types and put into a List
+    print('These are the types of users and their counts:') 
 
-    user_types = df['User Type'].value_counts().index.tolist()
-    user_types_counts = df['User Type'].value_counts().tolist()
-    print('These are the types of users and their counts:')
-
+    #loop through both Lists grabbing the user type and count for each user type
     i = 0
     while i < len(user_types):
         print('\t', user_types[i], user_types_counts[i])
@@ -195,14 +195,14 @@ def user_stats(df):
 
 
     # Display counts of gender
-
-    if('Gender' not in df):
+    if('Gender' not in df): #check if gender is in dataframe
         print('Washington DC does not have gender data.')
-    else:
-        genders = df['Gender'].value_counts().index.tolist()
-        gender_counts = df['Gender'].value_counts().tolist()
+    else: 
+        genders = df['Gender'].value_counts().index.tolist() #get names of gender types and put into a List
+        gender_counts = df['Gender'].value_counts().tolist() #get counts of gender types and put into a List
         print('These are the genders and their counts:')
 
+    #loop through both Lists grabbing the gender type and count for each gender
         i = 0
         while i < len(genders):
             print('\t', genders[i], gender_counts[i])
@@ -211,17 +211,16 @@ def user_stats(df):
 
 
     # Display earliest, most recent, and most common year of birth
-
-    if('Birth Year' not in df):
+    if('Birth Year' not in df): #check if birth data in in dataframe
         print('Washington DC does not have birth year data.')
     else:
-        youngest = int(df['Birth Year'].max())
+        youngest = int(df['Birth Year'].max()) #get most recent year
         print('The youngest user was born in:', youngest,'\n')
 
-        oldest = int(df['Birth Year'].min())
+        oldest = int(df['Birth Year'].min()) #get oldest year
         print('The oldest user was born in:', oldest,'\n')
 
-        birth_year_mode = int(df['Birth Year'].mode())
+        birth_year_mode = int(df['Birth Year'].mode()) #get most common year
         print('Most users were born in:', birth_year_mode)
 
 
@@ -230,21 +229,23 @@ def user_stats(df):
 
 
 def raw_data(df):
+    """Displays the raw data in chunks."""
+
     while True:
         view_data = input('Would you like to view the raw data? Enter Yes or press any key to exit. ').lower()
         if view_data != 'yes':
             break
 
         else:
-            continue_view = 'yes'
-            position_one = 0
-            position_two = 5
+            continue_view = 'yes' #initialize to yes
+            position_one = 0 #initialize start to 0
+            position_two = 5 #initialize stop to 5
 
             while continue_view == 'yes':
                 print(df[position_one:position_two])
                 continue_view = input('Would you like to cotinue viewing the data? Enter Yes or press any key to exit.').lower()
-                position_one = position_two
-                position_two += 5
+                position_one = position_two #set new start to old stop
+                position_two += 5 #set new stop to 5 more rows
 
             break
 
